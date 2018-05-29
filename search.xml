@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SSH的简单使用]]></title>
+    <url>%2Fusage_of_the_ssh%2F</url>
+    <content type="text"><![CDATA[ssh免密码登入 生成密钥 123$ ssh-keygen [-t dsa | ecdsa | ed25519 | rsa | rsa1] //加密方式 [-C comment] //注释 [-f output_keyfile] //密钥文件保存位置 如不做其他设置一路回车即可 生成密钥后找到密钥文件 如未设置保存路径 则默认保存在 ~/.ssh/ 包括id_[-t dsa | ecdsa | ed25519 | rsa | rsa1] 和id_[-t dsa | ecdsa | ed25519 | rsa | rsa1].pub文件 将公钥上传至远程linux服务器 将id_xxx.pub文件中的内容追加到远程服务器~/.ssh/authorized_keys文件中 没有则自行创建 注 ~为userhome ssh-copy-id ssh-copy-id命令可以把本地主机的公钥复制到远程主机的authorized_keys文件上，ssh-copy-id命令也会给远程主机的用户主目录（home）和~/.ssh, 和~/.ssh/authorized_keys设置合适的权限。 12$ ssh-copy-id [-i [identity_file]] //本地的ssh公钥文件路径 [user@]hostname //远程主机 scp scp命令用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp，不过cp只是在本机进行拷贝不能跨服务器，而且scp传输是加密的。 123$ scp [-i identity_file] //本地ssh公钥文件 [-P port] //远程端口 [[user@]host1:]file //指定远程路径 然后将公钥内容追加到远程服务器~/.ssh/authorized_keys文件中 1$ cat id_xxx.pub &gt;&gt; ~/.ssh/authorized_keys 手动 在本地ctrl+c复制id_xxx.pub中的密钥 然后在服务器端： 1$ echo "ctrl+v" &gt;&gt; ~/.ssh/authorized_keys 登录 12ssh [-p port] //远程端口 [user@]hostname //登录用户名和远程主机 参考 ArchWiki linuxde]]></content>
+      <categories>
+        <category>手记</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[心愿]]></title>
-    <url>%2F%E6%83%B3%2F%E5%BF%83%E6%84%BF%2F</url>
-    <content type="text"><![CDATA[想要买和读的书 [ ] 《Think In Java》 [ ] 《Effective Java》 [ ] 《Hadoop权威指南》 [ ] 《Deep Learning 深度学习》 配件 [ ] 组装双屏升降显示器 [ ] MBP [ ] 一只猫（我一定会有猫的!（有生之年QWQ]]></content>
+    <url>%2Fwishes%2F</url>
+    <content type="text"><![CDATA[想要买和读的书 [x] 《Think In Java》 [ ] 《Effective Java》 [ ] 《Hadoop权威指南》 [ ] 《Deep Learning 深度学习》 配件 [ ] 组装双屏升降显示器 [ ] MBP [ ] 一只猫（我一定会有猫的!（有生之年QWQ]]></content>
       <categories>
         <category>想</category>
       </categories>
@@ -14,7 +26,7 @@
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <url>%2Funcategorized%2Fhello-world%2F</url>
+    <url>%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start Create a new post 1$ hexo new "My New Post" More info: Writing Run server 1$ hexo server More info: Server Generate static files 1$ hexo generate More info: Generating Deploy to remote sites 1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
