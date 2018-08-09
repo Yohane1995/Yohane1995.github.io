@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<link class="aplayer-style-marker" rel="stylesheet" href="/assets/css/APlayer.min.css" >
+<script class="aplayer-script-marker" src="/assets/js/APlayer.min.js" ></script>
+<script class="meting-script-marker" src="/assets/js/Meting.min.js" ></script>
+
+  <meta name="description" content="Python进阶笔记 内容以缩进形式分层 有些知识点点到为止">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3进阶笔记">
+<meta property="og:url" content="https://reki.me/advance-python/index.html">
+<meta property="og:site_name" content="Yohane">
+<meta property="og:description" content="Python进阶笔记 内容以缩进形式分层 有些知识点点到为止">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-09T12:50:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python3进阶笔记">
+<meta name="twitter:description" content="Python进阶笔记 内容以缩进形式分层 有些知识点点到为止">
+
+
+
+
+
+
+  <link rel="canonical" href="https://reki.me/advance-python/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python3进阶笔记 | Yohane</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yohane</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">羽子</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://reki.me/advance-python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yohane">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yohane">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Python3进阶笔记
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-08 00:58:08" itemprop="dateCreated datePublished" datetime="2018-08-08T00:58:08+08:00">2018-08-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-09 20:50:37" itemprop="dateModified" datetime="2018-08-09T20:50:37+08:00">2018-08-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<ul>
+<li>Python进阶笔记</li>
+<li>内容以缩进形式分层</li>
+<li>有些知识点点到为止</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h1 id="python中一切皆对象"><a class="markdownIt-Anchor" href="#python中一切皆对象"></a> python中一切皆对象</h1>
+<h2 id="python中一切皆对象-2"><a class="markdownIt-Anchor" href="#python中一切皆对象-2"></a> python中一切皆对象</h2>
+<pre><code>可赋值给一个变量
+可以添加到集合对象中
+可以作为参数传递给函数
+可以当做函数的返回值
+</code></pre>
+<h2 id="type-object-class"><a class="markdownIt-Anchor" href="#type-object-class"></a> type object  class</h2>
+<pre><code>type-&gt;class-&gt;obj
+object是最顶层基类
+type也是一个类 同时type也是一个对象
+type用于实例一切对象
+type()函数用于查看实例由哪一对象生成
+.__bases__属性用于查看对象上级继承的是哪一对象
+此处有图
+</code></pre>
+<h2 id="python中的创建的内置类型"><a class="markdownIt-Anchor" href="#python中的创建的内置类型"></a> python中的创建的内置类型</h2>
+<pre><code>对象的三个特征
+    身份 也就是内存地址 用id()函数访问
+    类型 数据类型
+    值 赋值
+None类型（全局只有一个）
+    即内存地址相同
+数值类型
+    int float complex bool
+迭代类型
+序列类型
+    list bytes byte array memoryview range tuple str array
+映射类型
+    dict
+集合类型
+    set  frozenset
+上下文管理类型
+    with语句
+其他
+    模块类型 class和实例 函数类型 方法类型 object对象 type类型 ellipsis类型 notimplemented类对象
+</code></pre>
+<h1 id="魔法函数"><a class="markdownIt-Anchor" href="#魔法函数"></a> 魔法函数</h1>
+<h2 id="魔法函数定义"><a class="markdownIt-Anchor" href="#魔法函数定义"></a> 魔法函数定义</h2>
+<pre><code>类中以双下划线开头和结尾的函数 是python内置的
+魔法函数影响python语法 python语法实际调用魔法函数
+</code></pre>
+<h2 id="魔法函数-2"><a class="markdownIt-Anchor" href="#魔法函数-2"></a> 魔法函数</h2>
+<pre><code>非数学运算
+    字符串表示
+        __repr__ 在debug模式调用 输出对象
+        __str__    重写字符串 内置函数print()默认调用内置函数str()
+数学运算
+</code></pre>
+<h1 id="深入类和对象"><a class="markdownIt-Anchor" href="#深入类和对象"></a> 深入类和对象</h1>
+<h2 id="鸭子类型和多态"><a class="markdownIt-Anchor" href="#鸭子类型和多态"></a> 鸭子类型和多态</h2>
+<pre><code>当看到一只鸟走起来像鸭子 游泳起来像鸭子 叫起来像鸭子 那么这只鸟就可以被称为鸭子
+方法相关 某个类有某个指定方法 那么就被称为某类型
+因为python动态语言的关系 无法从类的类型来判断并实现多态 所以使用鸭子类型来实现多态
+</code></pre>
+<h2 id="抽象基类abc模块"><a class="markdownIt-Anchor" href="#抽象基类abc模块"></a> 抽象基类(abc模块)</h2>
+<pre><code>hasattr(obj,”fun”) 判断某个对象中是否有某个方法
+isinstance(obj,otherobj) 通过继承链 判断某个类是否属于某个类
+抽象基类的使用
+    import abc包
+    类继承 mataclass=abc.ABCMeta
+    用@abc.abstractmathod装饰器装饰方法
+</code></pre>
+<h2 id="isinstance和type"><a class="markdownIt-Anchor" href="#isinstance和type"></a> isinstance和type</h2>
+<pre><code>type()判断对象id
+isinstance() 判断继承继承链
+</code></pre>
+<h2 id="类变量和实例变量"><a class="markdownIt-Anchor" href="#类变量和实例变量"></a> 类变量和实例变量</h2>
+<pre><code>self参数 传递的是类实例
+实例变量和类变量是独立的 在实例中修改类变量并不会改变类的类变量 一个类的不同实例会共用同一个实例类变量
+</code></pre>
+<h2 id="类属性和实例属性以及查找顺序"><a class="markdownIt-Anchor" href="#类属性和实例属性以及查找顺序"></a> 类属性和实例属性以及查找顺序</h2>
+<pre><code>MRO算法
+    DFS算法 继承关系有菱形时 存在无法达到重写方法的效果
+    BFS算法 继承关系为Y形时 当出现继承方法重名时 优先继承的类的方法不能优先使用
+    C3算法(python2.3之后)
+使用__mro__属性查看类的查找顺序
+</code></pre>
+<h2 id="静态方法-类方法以及对象方法及参数"><a class="markdownIt-Anchor" href="#静态方法-类方法以及对象方法及参数"></a> 静态方法 类方法以及对象方法及参数</h2>
+<pre><code>方法前由 def 关键字修饰
+静态方法用@staticmethod完成初始化
+    通常在不返回类的情景下使用
+    没有实例参数self
+类方法用@classmethod完成初始化
+    通常在返回类的情景下使用
+    第一个参数传递的是类本身 通常写成cls
+实例方法
+    第一个参数传递的是实例本身 通常写为 self
+</code></pre>
+<h2 id="数据封装和私有属性"><a class="markdownIt-Anchor" href="#数据封装和私有属性"></a> 数据封装和私有属性</h2>
+<pre><code>在对象变量或者对象方法前加双下划线 如 __method 或 __var python自动更名为 _class__method 或者 _class__var 的形式达到隐藏的效果 但仍然可以通过更名后的形式访问
+</code></pre>
+<h2 id="python对象的自省机制"><a class="markdownIt-Anchor" href="#python对象的自省机制"></a> python对象的自省机制</h2>
+<pre><code>通过__dict__查询属性 会列出部分属性和值 可以通过该属性 以字典是形式访问、添加属性或者修改值
+通过dir()方法 只列出对象中的所有属性
+</code></pre>
+<h2 id="super真的是调用父类吗"><a class="markdownIt-Anchor" href="#super真的是调用父类吗"></a> super真的是调用父类吗？</h2>
+<pre><code>super执行顺序
+    调用的是MRO顺序的下一个类的构造函数
+</code></pre>
+<h2 id="mixing继承模式"><a class="markdownIt-Anchor" href="#mixing继承模式"></a> mixing继承模式</h2>
+<pre><code>mixing类功能单一
+不和基类关联 可以和任意基类关联 基类可以不和mixin关联就鞥初始化成功
+在mixin中不要使用super方法
+</code></pre>
+<h2 id="python中的with语句"><a class="markdownIt-Anchor" href="#python中的with语句"></a> python中的with语句</h2>
+<pre><code>上下文管理器协议
+    实现两个魔法函数
+        __enter__() 在with语句中 进入时调用
+        __exit__() 在with语句中 结束时调用
+with…as..语句
+    with后的语句(通常实例一个对象)执行后调用__enter__()魔法函数 并返回值
+    __enter__()魔法函数执行后的返回值赋值给as后的变量
+    as后的变量可以在下边的代码块中调用
+    语句块执行完后调用 __exit__() 魔法函数
+    with语句捕获到异常则直接执行__exit__() 魔法函数
+</code></pre>
+<h2 id="contextlib简化上下文管理器"><a class="markdownIt-Anchor" href="#contextlib简化上下文管理器"></a> contextlib简化上下文管理器</h2>
+<pre><code>contextlib的使用
+    import context lib 包
+    使用@contextlib.contextmanager装饰方法
+    配合yield使用
+    yield前的代码块相当于__enter__()魔法函数中的代码块
+    yield返回一个值
+    yield后的代码块相当于__exit__() 魔法函数中的代码块
+</code></pre>
+<h1 id="自定义序列类"><a class="markdownIt-Anchor" href="#自定义序列类"></a> 自定义序列类</h1>
+<h2 id="序列类型的分类"><a class="markdownIt-Anchor" href="#序列类型的分类"></a> 序列类型的分类</h2>
+<pre><code>容器序列 (可存放任意类型的容器 )
+    list tuple deque
+扁平序列(指定数据类型)
+    str bytes byte array array.array
+可变序列
+    list deque byte array array
+不可变序列
+    str tuple bytes
+</code></pre>
+<h2 id="python中序列类型的abc继承关系"><a class="markdownIt-Anchor" href="#python中序列类型的abc继承关系"></a> python中序列类型的abc继承关系</h2>
+<pre><code>在from collection import abc (容器相关的抽象基类)中
+Sequence(不可变序列)
+    继承Reversible 和 Collection
+        Collection继承Sized Iterable和Container
+            Sized 实现 __len__ 方法 计算长度
+            Iterable 实现__iter__ 方法 迭代器 用于for循环
+            Container 实现 __contains__ 方法 用于使用IN 判断数据是否存在
+MutableSequence(可变序列)
+    必须实现__new__ __init__ __getitem__ __setitem__ __delitem__ __len__ insert() 方法
+</code></pre>
+<h2 id="list中extend方法区别"><a class="markdownIt-Anchor" href="#list中extend方法区别"></a> list中extend方法区别</h2>
+<pre><code>+运算
+    只能相加相同的序列类型
+    返回一个新的实例 也就是说id()不同
++=就地加
+    实际调用MutableSequence.__iadd__(self,values)方法
+    __iadd__ 又调用 self.extend(values) 方法
+    self.extend(values) 通过for循环迭代出每个元素
+    然后使用self.append()方法追加每个元素
+    也就是说可以相加不同序列类型
+    对原来的实例相加 也就是说id()相同
+</code></pre>
+<h2 id="实现可切片的对象会返回一个新的列表"><a class="markdownIt-Anchor" href="#实现可切片的对象会返回一个新的列表"></a> 实现可切片的对象(会返回一个新的列表)</h2>
+<pre><code>可以做取值 赋值 删除操作
+[start:end:step]
+    start 表示切片开始位置 默认为0
+    end 表示切片截止位置 默认为列表长度
+    step 表示步长 默认为1
+
+切片需实现的__getitem__(self,item)方法
+    如果以切片访问 item为slice 即切片对象
+    如果以索引访问 item为int 即索引位置
+</code></pre>
+<h2 id="bisect维护已排序序列"><a class="markdownIt-Anchor" href="#bisect维护已排序序列"></a> bisect维护已排序序列</h2>
+<pre><code>import bisect 导入bisect包 用来处理已排序的序列
+bisect模块
+    insort方法用于插入默认为insort_right
+    bisect方法用于查找(使用二分查找) 默认为bisect_right
+    还有insort_left和bisect_left方法 即当遇到相同元素时 插入以有相同元素的左边
+</code></pre>
+<h2 id="什么时候我们不该使用列表"><a class="markdownIt-Anchor" href="#什么时候我们不该使用列表"></a> 什么时候我们不该使用列表</h2>
+<pre><code>array和list的一个重要的区别 array只能存放指定的数据类型 其效率高
+</code></pre>
+<h2 id="列表推导式-生成器表达式-字典推导式"><a class="markdownIt-Anchor" href="#列表推导式-生成器表达式-字典推导式"></a> 列表推导式、生成器表达式、字典推导式</h2>
+<pre><code>列表推导式(列表推导式性能高于列表操作)
+    [  for  in  if  ] 返回的是一个列表
+生成器表达式
+    (  for  in  if  )  注：返回的是 generator 生成器类
+字典推导式
+    { key:value for  in  if  }  注： 推导式中的key和value是通常的命名 是不固定的
+ 集合推导式
+    {  one_value for  in   if  } 只要返回一个值即可生成集合
+</code></pre>
+<h1 id="深入python的set和dict"><a class="markdownIt-Anchor" href="#深入python的set和dict"></a> 深入python的set和dict</h1>
+<h2 id="dict的abc的继承关系"><a class="markdownIt-Anchor" href="#dict的abc的继承关系"></a> dict的abc的继承关系</h2>
+<pre><code>from collection.abc import Mapping
+dict属于mapping类型 即继承了mapping
+</code></pre>
+<h2 id="dict的常用方法"><a class="markdownIt-Anchor" href="#dict的常用方法"></a> dict的常用方法</h2>
+<pre><code>clear() 删除字典内所有元素
+copy() 浅拷贝 指向同一地址 拷贝后的操作会影响被拷贝的数据 深拷贝需要import copy
+fromkeys() 将可迭代是对象转成dict的keys
+get() 避免在没有对应元素时抛出异常
+items() 拆包key和value
+setdefault(key, default=None) 和get()类似, 但如果键不存在于字典中，将会添加键并将值设为default
+update() 合并或添加 即更新原来的dict  #猜想 会把迭代中的奇数位元素作为key 偶数位做为value
+</code></pre>
+<h2 id="dict的子类"><a class="markdownIt-Anchor" href="#dict的子类"></a> dict的子类</h2>
+<pre><code>不建议继承list和dict等内置的类型 由于底层使用c语言实现 所以一些操作不会调用覆盖后的方法 如果要继承建议使用 from collections import UserDict 模块 完全有python语言编写
+from collections import defaultdict
+    其中的__missing__函数 作用：在找不到元素时 设置默认值
+</code></pre>
+<h2 id="set和fronzenset"><a class="markdownIt-Anchor" href="#set和fronzenset"></a> set和fronzenset</h2>
+<pre><code>set（集合可变） fronzenset（不可变的集合）无序的 不重复 set可以通过add方法添加元素  fronzenset不能
+set 的方法
+    add
+    update 可将两个set合并为一个set
+    difference 返回两个集合的差集 #集合运算 | 并集 &amp; 交集 - 差集 运算符实际是调用魔法函数
+    issubset 判断是否存在交集
+</code></pre>
+<h2 id="dict和set的实现原理"><a class="markdownIt-Anchor" href="#dict和set的实现原理"></a> dict和set的实现原理</h2>
+<pre><code>一些结论
+    dict查找的性能远远大于list
+    在list中随着list数据的增大 查找时间会增大
+    在dict中查找元素的时间 不会随着dict的增大而增大
+    dict的key或者set的值 都
+dict原理（与java中的Map相似）
+    对key做哈希运算 然后做与运算作为偏移量 如果发生冲突则解决冲突 所以查找时间复杂度为O(1)
+    1.dict的key或者set的值 都是必须是可以hash的
+       不可变对象 都是可以hash的 如str fronzenset tuple  可自己实现类的__hash__
+    2.dict的内存开销大 但是查询的速度快  自定义的对象或者python内部的对象都是用dict包装的
+    3.dict的存储顺序和元素添加顺序有关 和内部的hash表偏移有关 #这就是为什么set在更新数据后print出来的数据位置无序且可能会改变原来数据的位置的原因
+    4.添加数据有可能改变已有数据的顺序
+</code></pre>
+<h1 id="对象引用-可变性和垃圾回收"><a class="markdownIt-Anchor" href="#对象引用-可变性和垃圾回收"></a> 对象引用、可变性和垃圾回收</h1>
+<h2 id="python中的变量是什么"><a class="markdownIt-Anchor" href="#python中的变量是什么"></a> python中的变量是什么</h2>
+<pre><code>python和java中的变量本质不一样 python的变量实质上是一个指针 int str  变量可以看做一个便利贴
+可以通过is运算符或者id()函数判断是否是同一变量
+</code></pre>
+<h2 id="和is的区别"><a class="markdownIt-Anchor" href="#和is的区别"></a> ==和is的区别</h2>
+<pre><code>==判断的是内容是否相等 调用的是__eq__魔法函数 #类似java中的Object.equals
+is判断的是指针所指的内存地址是否相同 也就是变量id()是否相同
+因为python中的intern机制 有时候int str类型内容相同 id也相同 #相当于java中String.intern方法
+</code></pre>
+<h2 id="del语句和垃圾回收"><a class="markdownIt-Anchor" href="#del语句和垃圾回收"></a> del语句和垃圾回收</h2>
+<pre><code>python中垃圾回收的算法是采用 引用计数
+引用计数
+    当一个变量指向一个地址是 那么引用计数器+1
+    del一个变量时 该地址的引用计数器-1
+    当引用计数为0时  资源被回收
+    del语句实际调用__del__魔法函数
+</code></pre>
+<h2 id="一个经典的参数错误"><a class="markdownIt-Anchor" href="#一个经典的参数错误"></a> 一个经典的参数错误</h2>
+<pre><code>传递的参数尽量为不可变的
+# 引用传递 参数传递
+</code></pre>
+<h1 id="元类编程"><a class="markdownIt-Anchor" href="#元类编程"></a> 元类编程</h1>
+<h2 id="property动态属性"><a class="markdownIt-Anchor" href="#property动态属性"></a> property动态属性</h2>
+<pre><code>@property装饰器
+    修饰方法后 可以通过 . 的方式访问 变得与访问属性的方式相同
+    被修饰方法看作一个属性 该属性的值可以自定义逻辑返回
+@xxx.setter 装饰器
+    xxx为被@property装饰器修饰的方法
+    同理 用来动态设置动态属性
+
+__getattr__ __getattribute__魔法函数
+    __getattr__在查找不到属性的时候调用
+    __getattribute__所有属性访问的入口 该魔法函数会调用__getattr__
+</code></pre>
+<h2 id="属性描述符和属性查找过程"><a class="markdownIt-Anchor" href="#属性描述符和属性查找过程"></a> 属性描述符和属性查找过程</h2>
+<pre><code>属性描述符
+    实现__get__ __set__ __delete__ 任何一个魔法方法 就可以将一个类变成属性描述符
+    实现了__get__ 和 __set__ 称为数据属性描述符
+    只实现了__get__ 称为非数据属性描述符
+    使用：在一个类中将属性描述符实例赋值给类变量
+属性查找过程
+    getattr()方法用于访问实例的变量 #如项目里mogodb_client访问collection的三种方法 1.mongodb_client.r20.dmmr18 2.mongodb_client[r20][dmmr18] 3.getattr(self.mongodb_client[&quot;r20&quot;],&quot;dmmr18&quot;)
+    此处有图
+</code></pre>
+<h2 id="new-和-init-的区别"><a class="markdownIt-Anchor" href="#new-和-init-的区别"></a> <strong>new</strong> 和 <strong>init</strong> 的区别</h2>
+<pre><code>new 是用来控制对象的生成过程 ，在对象生成之前
+init 是用来完善对象的
+如果new方法不返回对象 则不会调用init函数
+__new__(cls, *args, **kwargs)
+    如果指定参数名赋值 则赋值给**kwargs 类型为 dict
+    如果没有指定参数名赋值 则赋值给 *args 类型为 tuple
+    cls 为对象 需return super.()__new__(cls) 才会调回 init 函数
+__init__(self)
+    在new 之后被调用
+</code></pre>
+<h2 id="自定义元类"><a class="markdownIt-Anchor" href="#自定义元类"></a> 自定义元类</h2>
+<pre><code>元类是创建类的类
+type(object_or_name, bases, dict)
+    第一个参数为类名 传入str类型
+    第二个参数为 继承基类 当不继承时需要传入一个空tuple ()
+    第三个参数为 自定义属性和方法 dict类型 key为属性名或函数名 value为属性值或自定义的函数
+metaclass 类属性
+    作用：如 继承抽象基类时做函数重写的检查
+    指定一个类 通过重写__new__函数来自定义创建类对象和实例的过程
+    元类需要继承type类
+    需 return super.()__new__(cos, *args, **kwargs) *args 和 **kwargs 也需要完整的传递进来
+</code></pre>
+<h2 id="通过元类实现orm"><a class="markdownIt-Anchor" href="#通过元类实现orm"></a> 通过元类实现ORM</h2>
+<h1 id="迭代器和生成器"><a class="markdownIt-Anchor" href="#迭代器和生成器"></a> 迭代器和生成器</h1>
+<h2 id="python中的迭代协议"><a class="markdownIt-Anchor" href="#python中的迭代协议"></a> python中的迭代协议</h2>
+<pre><code>迭代器是什么？
+    迭代器是访问集合内元素的一种方式 一般用来遍历数据
+    迭代器和以下标的访问方式不一样 迭代器是不能返回的 迭代器提供了一种惰性方式数据的方式
+    list不是一个迭代器 但是可迭代 for语句 自动使用 iter() 内置方法将list变成一个迭代器 for语句才可迭代
+from collection.abc import
+    Iterable 可迭代 实现__iter__抽象函数
+    Iterator 迭代器 实现__next__抽象函数
+</code></pre>
+<h2 id="什么是迭代器和可迭代对象"><a class="markdownIt-Anchor" href="#什么是迭代器和可迭代对象"></a> 什么是迭代器和可迭代对象</h2>
+<pre><code>迭代器与迭代对象逻辑实现要分离
+迭代器
+    继承 from collection.abc import Iterator #java中是继承 implements Iterator 接口
+    实现 __next__魔法函数 维护下一个元素的位置 #java中重写 next() 方法
+    如没有下一个元素则 raise StopIterator 异常 结束迭代    #java中重写 hasNext() 方法 判断是否还有下一个元素
+可迭代对象
+    实现__iter__ 魔法函数 return 一个迭代器
+</code></pre>
+<h2 id="生成器函数的使用"><a class="markdownIt-Anchor" href="#生成器函数的使用"></a> 生成器函数的使用</h2>
+<pre><code>生成器函数
+    惰性求值 延迟求值提供了可能
+    函数中只要有yield关键字 该函数就是生成器函数
+    yield 返回的是generator（生成器）对象 是可迭代的
+    return 只能写一个 而yield能写多个
+</code></pre>
+<h2 id="生成器在userlist中的应用"><a class="markdownIt-Anchor" href="#生成器在userlist中的应用"></a> 生成器在UserList中的应用</h2>
+<pre><code>from collection.abc import UserList
+    UserList 使用python实现
+    其中__iter__ 魔法函数用到yield关键字 将该魔法函数变为生成器 依次返回下一个迭代元素
+</code></pre>
+<h1 id="python-socket编程"><a class="markdownIt-Anchor" href="#python-socket编程"></a> python socket编程</h1>
+<h2 id="弄懂-http-socket-tcp-这几个概念"><a class="markdownIt-Anchor" href="#弄懂-http-socket-tcp-这几个概念"></a> 弄懂 HTTP、Socket、TCP 这几个概念</h2>
+<pre><code>socket本质是编程接口 不属于任何协议 对TCP/IP协议的封装 提供给程序猿使用 与下层协议交互 在上层可自定义协议
+http 应用层协议
+TCP 传输层协议
+</code></pre>
+<h2 id="client和server实现通讯"><a class="markdownIt-Anchor" href="#client和server实现通讯"></a> client和server实现通讯</h2>
+<pre><code>此处有图
+</code></pre>
+<h1 id="多线程-多进程和线程池编程"><a class="markdownIt-Anchor" href="#多线程-多进程和线程池编程"></a> 多线程、多进程和线程池编程</h1>
+<h2 id="python-中的-gil"><a class="markdownIt-Anchor" href="#python-中的-gil"></a> python 中的 GIL</h2>
+<pre><code>gil global interpreter lock （cpython）
+python中一个线程对应于c语言中的一个线程
+gil使得同一个时刻只有一个线程在一个cpu上执行字节码, 无法将多个线程映射到多个cpu上执行
+gil会根据执行的字节码行数以及时间片释放gil，gil在遇到io的操作时候主动释放
+</code></pre>
+<h2 id="多线程编程-threading"><a class="markdownIt-Anchor" href="#多线程编程-threading"></a> 多线程编程 - threading</h2>
+<pre><code>多线程编程的第一种方式
+    import threading
+    threading.Thread(target=func, args=tuple) target 参数传入一个方法 args 参数用于传入方法参数 类型为tuple
+    获得线程实例后 执行 start()方法
+    实例的setDaemon(bool) 方法 bool为True时 可将线程设置为守护线程 即主线程结束时同时结束该守护线程
+多线程编程的第二种方式
+    继承 threading.Thread 并实现run函数
+    实例化类后执行start() 方法即可
+    join() 方法可以阻塞主线程 等到子线程结束后 才继续执行主线程
+</code></pre>
+<h2 id="线程间通信-共享变量和-queue"><a class="markdownIt-Anchor" href="#线程间通信-共享变量和-queue"></a> 线程间通信 - 共享变量和 Queue</h2>
+<pre><code>共享变量
+    是线程不安全的
+Queue
+    Queue使用的是deque（双端队列）是线程安全的
+    一些方法
+        task_done join qsize empty full put get put_nowait get_nowait
+</code></pre>
+<h2 id="线程同步-lock-rlock"><a class="markdownIt-Anchor" href="#线程同步-lock-rlock"></a> 线程同步 - Lock、RLock</h2>
+<pre><code>from threading import Lock,Rlock
+Lock
+    声明锁 Lock()
+    lock.acquire 获取锁
+    lock.release 释放锁
+RLock 可重入锁 #相当于java中的ReentrantLock
+    在同一线程中 acquire和release 操作的次数要相等
+</code></pre>
+<h2 id="线程同步-condition-使用以及源码分析"><a class="markdownIt-Anchor" href="#线程同步-condition-使用以及源码分析"></a> 线程同步 - condition 使用以及源码分析</h2>
+<pre><code>from threading import Condition 条件变量 用于复杂的线程间同步
+    配合with语句使用 进入__enter__ 方法 会对condition加锁
+    wait 方法执行时 会获取一个锁实例并加锁
+    并把wait的锁加入双端队列
+    同时释放condition的锁
+    notify方法执行时 会对双端队列中的wait锁弹出 并解锁
+一些总结
+    启动顺序很重要
+    在调用with cond之后才能调用wait或者notify方法
+    condition有两层锁， 一把底层锁会在线程调用了wait方法的时候释放， 上面的锁会在每次调用wait的时候分配一把并放入到cond的等待队列中，等到notify方法的唤醒
+</code></pre>
+<h2 id="线程同步-semaphore-使用以及源码分析"><a class="markdownIt-Anchor" href="#线程同步-semaphore-使用以及源码分析"></a> 线程同步 - Semaphore 使用以及源码分析</h2>
+<pre><code>Semaphore 是用于控制进入数量的锁 #相当于java中的Semaphore
+from threading import Semaphore 内部使用condition完成
+    threading.Semaphore(num) num为并发数
+    acquire方法调用时 其中的计数器会+1 当计数器满时 也就是达到了num的数量时会阻塞
+    release 方法调用时 其中的计数器会-1 当计数器为零时 会释放锁
+</code></pre>
+<h2 id="threadpoolexecutor线程池"><a class="markdownIt-Anchor" href="#threadpoolexecutor线程池"></a> ThreadPoolExecutor线程池</h2>
+<pre><code>一些总结
+    线程池， 为什么要线程池
+    主线程中可以获取某一个线程的状态或者某一个任务的状态，以及返回值
+    当一个线程完成的时候我们主线程能立即知道
+    futures可以让多线程和多进程编码接口一致
+from concurrent.futures import ThreadPoolExecutor
+    ThreadPoolExecutor(max_workers) max_workers为线程池大小
+    通过 submit(func, tuple) 函数提交一个方法到线程池中 func为函数  tuple为以元祖的方式给func函数传入参数
+    submit会立即返回一个futures类 用来监视线程状态
+    监视线程状态常用方法：done result cancel
+from concurrent.futures import as_completed
+    用来获取线程池中已经完成的线程
+    使用：传入批量的线程池返回结果 然后通过for语句迭代  如：for future in as_completed(all_task)  最后future.result得到结果
+executor.map #executor为一个线程池实例
+    executor.map(func, *args)
+    同理 for result in executor.map(func, *args) 迭代直接返回结果
+as_completed和executor.map的区别
+    as_completed 将返回先完成的进程的结果
+    executor.map 将返回先执行的进程的结果
+from concurrent.futures import wait
+    可以阻塞主线程并可以指定何时继续执行主线程 如：所有线程完成之后才继续往下执行 或者只要有一个线程完成后就继续往下执行
+    使用：wait(fs) fs为futures序列 还有timeout（等待超时时间）参数 默认为None 和return_when（何时继续执行） 参数 默认为ALL_COMPLETED
+</code></pre>
+<h2 id="threadpoolexecutor源码分析"><a class="markdownIt-Anchor" href="#threadpoolexecutor源码分析"></a> ThreadPoolExecutor源码分析</h2>
+<pre><code>from concurrent.futures import Future
+    未来对象 task的返回容器
+    在线程池执行submit函数有生成一个Future实例
+    然后将future实例和需要执行的方法放入一个_WorkItem实例中
+    _WorkItem又被放到_work_queue队列中 待执行
+    最后_adjust_thread_count方法控制线程池大小并开启线程 交给_worker方法 _worker函数负责从_work_queue队列中获取_WorkItem并执行run方法
+    _WorkItem.run()函数负责完成函数的执行和将最后完成的结果赋值给future实例
+</code></pre>
+<h2 id="多线程和多进程对比"><a class="markdownIt-Anchor" href="#多线程和多进程对比"></a> 多线程和多进程对比</h2>
+<pre><code>多进程使用 from concurrent.futures import ProcessPoolExecutor 包 由于api相同 所以与多线切换很容易 ThreadPoolExecutor换成ProcessPoolExecutor即可
+一些总结
+    耗cpu的操作，用多进程编程， 对于io操作来说， 使用多线程编程，进程切换代价要高于线程
+    1. 对于耗费cpu的操作，多进程优于多线程
+    2. 对于io操作来说，多线程优于多进程
+由于GIL锁的存在 多进程并行的效率要比多进程并发的效率高
+    耗费cpu的运算操作应该放到多个cpu上
+    io操作不怎么耗费cpu 但在切换的操作上 线程效率要略快与进程效率 所以io操作应该用多进程
+    而且cpu核数是有限的 但进程可以开很多
+</code></pre>
+<h2 id="multiprocessing-多进程编程"><a class="markdownIt-Anchor" href="#multiprocessing-多进程编程"></a> multiprocessing 多进程编程</h2>
+<pre><code>os.fork 会新建子进程 只能用于Unix/Linux中 不能用在win中
+子进程会继续执行fork函数后的代码 但进程间数据是完全隔离的
+from concurrent.futures import ProcessPoolExecutor 底层使用的是multiprocessing
+实现多进程方法 需继承 multiprocessing.Process 实现的方法与多线程类似
+multiprocessing.Process(target, args)
+    一些方法 pid start join is_alive
+multiprocessing.pool()
+    也可以实现进程池 如果不指定线程池大小 则内部自动获取os.cpu_count()（cpu核心数）作为进程池大小
+    pool.apply_async() 异步提交任务 返回ApplyResult 类似Future
+    pool.close() 关闭进程池 不再接受新任务
+    pool.join() 等待所有任务完成 需在pool.close() 调用之后调用 不然会报错 Pool is still running
+    pool.imap() 同对线程池的 executor.map 同样先返回先加入的方法的结果
+</code></pre>
+<h2 id="进程间通信-queue-pipemanager"><a class="markdownIt-Anchor" href="#进程间通信-queue-pipemanager"></a> 进程间通信 - Queue、Pipe，Manager</h2>
+<pre><code>使用的是from multiprocessing import Queue, Manager, Pipe
+多进程数据是完全隔离的 共享全局变量不能适用于多进程编程，可以适用于多线程
+multiprocessing中的queue不能用于pool进程池
+pool中的进程间通信需要使用Manager中的queue 需要实例化 Manager().Queue(num)
+Pipe实例化返回receive_pipe（接收管道） send_pipe （发送管道） 只能适用于两个进程通讯 性能要高于Queue
+Manager中有很多函数可以实现多进程共享一个内存块 实现类似于多线程共享全局变量 还有很多函数实现通讯同步 API类似于多线程同步API
+</code></pre>
+<h1 id="协程和异步io"><a class="markdownIt-Anchor" href="#协程和异步io"></a> 协程和异步io</h1>
+<h2 id="并发-并行-同步-异步-阻塞-非阻塞"><a class="markdownIt-Anchor" href="#并发-并行-同步-异步-阻塞-非阻塞"></a> 并发、并行、同步、异步、阻塞、非阻塞</h2>
+<pre><code>并发：是指一个时间段内 有几个程序在同一个cpu上运行 但是任意时刻只有一个程序在cpu上运行
+并行：是指任意时刻点上 有多个程序同时运行在多个cpu上
+同步：是指代码调用IO操作时 必须等待IO操作完成才返回的调用方式
+异步：是指代码调用IO操作时 不必等待IO操作完成就返回的调用方式
+阻塞：是指调用函数时候当前线程被挂起
+非阻塞：是指调用函数时候当前线程不会被挂起 而是立即返回
+</code></pre>
+<h2 id="c10k问题和io多路复用-select-poll-和-epoll"><a class="markdownIt-Anchor" href="#c10k问题和io多路复用-select-poll-和-epoll"></a> C10K问题和IO多路复用 (select、poll 和 epoll)</h2>
+<pre><code>Unix下五种I/O模型
+    阻塞式I/O    非阻塞式I/O   I/O复用    信号驱动式I/O    异步I/O（POSIX的aio_系列函数）
+select poll epoll是一个改良的过程
+epoll并不代表一定比select好
+    在并发高的情况下，连接活跃度不是很高， epoll比select
+    并发性不高，同时连接很活跃， select比epoll好
+</code></pre>
+<h2 id="select回调事件循环获取html"><a class="markdownIt-Anchor" href="#select回调事件循环获取html"></a> select+回调+事件循环获取html</h2>
+<pre><code>使用非阻塞IO完成http请求
+    client.setblocking(False) 设置非阻塞IO完成http请求 立马返回
+    但需要不断的while循环 尝试在连接建立后 执行操作
+使用select完成http请求 #参考java NIO中的Selector编程
+    注册
+        selector.register(self.client.fileno(), EVENT_WRITE, self.connected)
+            self.client.fileno()为文件描述符
+            EVENT_WRITE 为事件 辨识可写事件
+            self.connected 为回调函数 当client连接建立成功时 回调执行
+       selector.register(self.client.fileno(), EVENT_READ, self.readable)
+            self.client.fileno()为文件描述符
+             EVENT_READ 为事件 辨识可读事件
+            self.readable 为回调函数 当client接收到数据时 回调执行
+    注销
+        selector.unregister(key.fd)
+            key为注册事件标识
+            key为注册时self.client.fileno()的返回值
+    回调
+        事件循环，不停的请求socket的状态并调用对应的回调函数
+        select本身是不支持register模式
+        socket状态变化以后的回调是由程序员完成的
+        selector.select()
+            返回ready ready返回 key和mask
+            其中 key.data 返回注册时的回调函数
+</code></pre>
+<h2 id="回调之痛"><a class="markdownIt-Anchor" href="#回调之痛"></a> 回调之痛</h2>
+<pre><code>可读性差
+共享状态管理困难
+异常处理困难
+</code></pre>
+<h2 id="协程是什么"><a class="markdownIt-Anchor" href="#协程是什么"></a> 协程是什么</h2>
+<pre><code>C10M问题
+一些编程问题
+    回调模式编码复杂度高
+    同步编码的并发性不高
+    多线程编程需要线程同步锁
+协程
+    传统函数调用 过程 A-&gt;B-&gt;C
+    我们需要一个可以暂停的函数，并且可以在适当的时候恢复该函数的继续执行
+    出现了协程 -&gt; 有多个入口的函数， 可以暂停的函数， 可以暂停的函数(可以向暂停的地方传入值)
+    协程需求：暂停 传值 抛异常 关闭
+        采用同步的方式去编写异步的代码 在适当的时候暂停函数并在适当的时候启动函数
+        使用单线程去切换任务
+            线程是由操作系统切换的 单线程切换意味着我们需要程序员自己去调度任务
+            不在需要锁 并发性高 如果单线程内切换函数 性能远高于线程切换 并发性更高
+</code></pre>
+<h2 id="生成器进阶-send-close和throw方法"><a class="markdownIt-Anchor" href="#生成器进阶-send-close和throw方法"></a> 生成器进阶-send、close和throw方法</h2>
+<pre><code>生成器可以暂停
+生成器不仅可以产出值  还可以接受值
+启动生成器有两种 next() 和send()
+next() （暂停）
+send() （暂停 传值）
+    方法可以传递值进入生成器内部 同时还可以重启生成器 执行下一个yield位置
+    用send发送非none值之前，我们必须启动一次生成器， 方式有两种1. gen.send(None), 2. next(gen)
+close() （关闭）
+    会抛出 GeneratorExit 异常 是继承自BaseException
+        如果捕获后 做pass 处理且后边还有yield语句  close的地方就会抛出 RuntimeError
+        如果捕获后 raise StopIteration 则不会再抛出异常
+        所以这个异常不需要去捕获
+throw() （抛异常）
+    给当前yield语句抛出异常
+</code></pre>
+<h2 id="生成器进阶-yield-from"><a class="markdownIt-Anchor" href="#生成器进阶-yield-from"></a> 生成器进阶-yield from</h2>
+<pre><code>from itertools import chain
+    可以连接可迭代类型 然后在一个for中迭代
+yield和yield from的区别
+    yield只返回原始的结果
+    yield from 会依次返回可迭代对象中的元素
+yield from
+    main()——&gt;gen():yield from gen_child()
+    yield from会在调用方(main())与子生成器(gen_child())之间建立一个双向通道
+    会处理StopIteration等异常以及将结果返回
+    一些总结
+        简化版
+            1. 子生成器可能只是一个迭代器，并不是一个作为协程的生成器，所以它不支持.throw()和.close()方法；
+            2. 如果子生成器支持.throw()和.close()方法，但是在子生成器内部，这两个方法都会抛出异常；
+            3. 调用方让子生成器自己抛出异常
+            4. 当调用方使用next()或者.send(None)时，都要在子生成器上调用next()函数，当调用方使用.send()发送非 None 值时，才调用子生成器的.send()方法；
+        完整版
+            1. 子生成器生产的值，都是直接传给调用方的；调用方通过.send()发送的值都是直接传递给子生成器的；如果发送的是 None，会调用子生成器的__next__()方法，如果不是 None，会调用子生成器的.send()方法；
+            2. 子生成器退出的时候，最后的return EXPR，会触发一个StopIteration(EXPR)异常；
+            3. yield from表达式的值，是子生成器终止时，传递给StopIteration异常的第一个参数；
+            4. 如果调用的时候出现StopIteration异常，委托生成器会恢复运行，同时其他的异常会向上 &quot;冒泡&quot;；
+            5. 传入委托生成器的异常里，除了GeneratorExit之外，其他的所有异常全部传递给子生成器的.throw()方法；如果调用.throw()的时候出现了StopIteration异常，那么就恢复委托生成器的运行，其他的异常全部向上 &quot;冒泡&quot;；
+            6. 如果在委托生成器上调用.close()或传入GeneratorExit异常，会调用子生成器的.close()方法，没有的话就不调用。如果在调用.close()的时候抛出了异常，那么就向上 &quot;冒泡&quot;，否则的话委托生成器会抛出GeneratorExit异常。
+</code></pre>
+<h2 id="async和await"><a class="markdownIt-Anchor" href="#async和await"></a> async和await</h2>
+<pre><code>python为了将语义变得更加明确，就引入了async和await关键词用于定义原生的协程
+原生协程不能使用next(None)方法预激协程 必须使用send(None)方法
+使用async 关键词定义协程方法
+await 只接受async关键字定义的协程方法或者使用@types.coroutine装饰器装饰方法（该装饰器在import types包中 包装方法并实现__await__魔法方法）
+</code></pre>
+<h2 id="生成器实现协程"><a class="markdownIt-Anchor" href="#生成器实现协程"></a> 生成器实现协程</h2>
+<pre><code>使用import inspect包中inspect.getgeneratorstate()获取生成器状态 如 GEN_CREATED GEN_SUSPENDED GEN_CLOSED
+协程的调度依然是 事件循环+协程模式 协程是单线程模式
+</code></pre>
+<h1 id="asyncio并发编程"><a class="markdownIt-Anchor" href="#asyncio并发编程"></a> asyncio并发编程</h1>
+<h2 id="事件循环"><a class="markdownIt-Anchor" href="#事件循环"></a> 事件循环</h2>
+<pre><code>asyncio #参考java中的AIO
+    包含各种特定系统实现的模块化事件循环
+    传输和协议抽象
+    对TCP UDP SSL 子进程 延时调用以及其他的具体支持
+    模仿futures模块但适用于事件循环使用的Future类
+    基于yield from 的协议和任务 可以让你用顺序的方式编写并发代码
+    必须使用一个将产生阻塞IO的调用时 有接口可以把这个事件转移到线程池
+    模仿threading模块中的同步原语 可以用在单线程内的协程之间
+一些总结
+    事件循环+回调（驱动生成器）+epoll(IO多路复用)
+    asyncio是python用于解决异步io编程的一整套解决方案
+    tornado、gevent、twisted（scrapy， django channels）
+    torando(实现web服务器)， django+flask(uwsgi, gunicorn+nginx)
+    tornado可以直接部署， nginx+tornado
+一些使用
+    在协程编码中不能使用非异步阻塞方法
+    loop=asyncio.get_event_loop() 异步事件循环 可以看做协程池
+    loop.run_until_complete() 阻塞方法 直到协程方法执行完之后才往下执行 可以接收协程类型 协程的future类型 协程的task 类型 #相当于多线程中的join()
+    asyncio.wait() 接收可迭代异步对象
+    asyncio.sleep() 异步IO的sleep 需在前边加await关键字
+获取协程的返回值
+    asyncio.ensure_future()  内部使用loop.create_task将协程包装成task
+    task.add_done_callback() 为协程添加回调方法 future会作为参数传入回调函数中
+    from functools import partial 偏函数 可以包装函数 重新定义函数签名
+    asyncio.wait 相当于多线程中的wait 可以指定何时结束
+    asyncio.gather 与wait用法类似 但可以将协程分组 等待组完成后结束
+</code></pre>
+<h2 id="task取消和子协程调用原理"><a class="markdownIt-Anchor" href="#task取消和子协程调用原理"></a> task取消和子协程调用原理</h2>
+<pre><code>task取消
+    run_until_complete 内部使用run_forever() 但为future添加了个一个回调函数future.add_done_callback(_run_until_complete_cb) 当future完成时调用_run_until_complete_cb(fut) 在其中执行fut._loop.stop() 将事件循环停止 即将事件停止标识为True self._stopping = True
+    loop会被放到future中
+    asyncio.Task.all_tasks() 从loop中获取所有task
+    task.cancel() 取消task 返回True取消成功 返回False取消失败
+    loop.stop() 停止loop
+    loop.run_forever() 重新运行loop
+    loop.close() 最后关闭loop
+子协程调用
+    # 参考 https://docs.python.org/3/library/asyncio-task.html#example-chain-coroutines
+    与yield from相同
+</code></pre>
+<h2 id="call_soon-call_at-call_later-call_soon_threadsafe"><a class="markdownIt-Anchor" href="#call_soon-call_at-call_later-call_soon_threadsafe"></a> call_soon、call_at、call_later、call_soon_threadsafe</h2>
+<pre><code>loop.call_soon() 将回调函数加入FIFO队列 并按照注册顺序尽可能的回调返回
+loop.call_at 在loop某一时间点回调 用到loop.time()
+loop.call_later() 在指定时间后回调
+loop.call_soon_threadsafe()  是loop.call_soon() 的线程安全版
+</code></pre>
+<h2 id="threadpollexecutor-和-asycio-完成阻塞-io-请求"><a class="markdownIt-Anchor" href="#threadpollexecutor-和-asycio-完成阻塞-io-请求"></a> ThreadPollExecutor 和 asycio 完成阻塞 IO 请求</h2>
+<pre><code>loop.run_in_executor(executor, func, *args ) executor为线程池实例 func为放入线程池中的函数 *args为func参数 返回task 然后交给loop运行
+</code></pre>
+<h2 id="asyncio-模拟-http-请求"><a class="markdownIt-Anchor" href="#asyncio-模拟-http-请求"></a> asyncio 模拟 http 请求</h2>
+<pre><code>await asyncio.open_connection(host,port) 语句 等待建立连接
+    返回 reader 和writer reader用于接收响应 writer用于发送请求
+async for 语法  异步for循环 调用__anext__魔法函数
+asyncio.as_completed(tasks) 返回一个由@coroutine修饰的 _wait_for_one() 协程 其中才返回 f.result() 所以for得到的task前需要要加await 等待返回结果 #与多线程类似
+</code></pre>
+<h2 id="future-和-task"><a class="markdownIt-Anchor" href="#future-和-task"></a> future 和 task</h2>
+<pre><code>future
+    由于协程的单线程的原因 获取结果时执行_schedule_callbacks(self) 其中通过for循环获取 self._callbacks列表中的callback 然后执行self._loop.call_soon(callback, self)
+task
+    Task是Future的子类 是协程和Future之间的桥梁
+    task在__init__时调用__step通过send(None)预激了协程
+    task捕获在协程最后return时抛出的StopIteration异常 并通过self.set_result(exc.value)设置返回结果
+</code></pre>
+<h2 id="asyncio同步和通信"><a class="markdownIt-Anchor" href="#asyncio同步和通信"></a> asyncio同步和通信</h2>
+<pre><code>from asyncio import Lock, Queue
+    使用：await lock.acquire() 或 with await lock 或 async with lock
+    with await lock 或 async with lock 分别执行的是__await__和@coroutine修饰的__aenter__魔法函数
+</code></pre>
+<h1 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h1>
+<p><a href="https://coding.imooc.com/class/200.html" target="_blank" rel="noopener">慕课</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/my-favorite-songs/" rel="next" title="我喜欢的音乐">
+                <i class="fa fa-chevron-left"></i> 我喜欢的音乐
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Yohane" />
+            
+              <p class="site-author-name" itemprop="name">Yohane</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://kid-geek.me/" title="kid" target="_blank">kid</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python中一切皆对象"><span class="nav-number">1.</span> <span class="nav-text"> python中一切皆对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python中一切皆对象-2"><span class="nav-number">1.1.</span> <span class="nav-text"> python中一切皆对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type-object-class"><span class="nav-number">1.2.</span> <span class="nav-text"> type object  class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python中的创建的内置类型"><span class="nav-number">1.3.</span> <span class="nav-text"> python中的创建的内置类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#魔法函数"><span class="nav-number">2.</span> <span class="nav-text"> 魔法函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#魔法函数定义"><span class="nav-number">2.1.</span> <span class="nav-text"> 魔法函数定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#魔法函数-2"><span class="nav-number">2.2.</span> <span class="nav-text"> 魔法函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深入类和对象"><span class="nav-number">3.</span> <span class="nav-text"> 深入类和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#鸭子类型和多态"><span class="nav-number">3.1.</span> <span class="nav-text"> 鸭子类型和多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象基类abc模块"><span class="nav-number">3.2.</span> <span class="nav-text"> 抽象基类(abc模块)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#isinstance和type"><span class="nav-number">3.3.</span> <span class="nav-text"> isinstance和type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类变量和实例变量"><span class="nav-number">3.4.</span> <span class="nav-text"> 类变量和实例变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类属性和实例属性以及查找顺序"><span class="nav-number">3.5.</span> <span class="nav-text"> 类属性和实例属性以及查找顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态方法-类方法以及对象方法及参数"><span class="nav-number">3.6.</span> <span class="nav-text"> 静态方法 类方法以及对象方法及参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据封装和私有属性"><span class="nav-number">3.7.</span> <span class="nav-text"> 数据封装和私有属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python对象的自省机制"><span class="nav-number">3.8.</span> <span class="nav-text"> python对象的自省机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#super真的是调用父类吗"><span class="nav-number">3.9.</span> <span class="nav-text"> super真的是调用父类吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mixing继承模式"><span class="nav-number">3.10.</span> <span class="nav-text"> mixing继承模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python中的with语句"><span class="nav-number">3.11.</span> <span class="nav-text"> python中的with语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contextlib简化上下文管理器"><span class="nav-number">3.12.</span> <span class="nav-text"> contextlib简化上下文管理器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义序列类"><span class="nav-number">4.</span> <span class="nav-text"> 自定义序列类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列类型的分类"><span class="nav-number">4.1.</span> <span class="nav-text"> 序列类型的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python中序列类型的abc继承关系"><span class="nav-number">4.2.</span> <span class="nav-text"> python中序列类型的abc继承关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list中extend方法区别"><span class="nav-number">4.3.</span> <span class="nav-text"> list中extend方法区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现可切片的对象会返回一个新的列表"><span class="nav-number">4.4.</span> <span class="nav-text"> 实现可切片的对象(会返回一个新的列表)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bisect维护已排序序列"><span class="nav-number">4.5.</span> <span class="nav-text"> bisect维护已排序序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么时候我们不该使用列表"><span class="nav-number">4.6.</span> <span class="nav-text"> 什么时候我们不该使用列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表推导式-生成器表达式-字典推导式"><span class="nav-number">4.7.</span> <span class="nav-text"> 列表推导式、生成器表达式、字典推导式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深入python的set和dict"><span class="nav-number">5.</span> <span class="nav-text"> 深入python的set和dict</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dict的abc的继承关系"><span class="nav-number">5.1.</span> <span class="nav-text"> dict的abc的继承关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dict的常用方法"><span class="nav-number">5.2.</span> <span class="nav-text"> dict的常用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dict的子类"><span class="nav-number">5.3.</span> <span class="nav-text"> dict的子类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set和fronzenset"><span class="nav-number">5.4.</span> <span class="nav-text"> set和fronzenset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dict和set的实现原理"><span class="nav-number">5.5.</span> <span class="nav-text"> dict和set的实现原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象引用-可变性和垃圾回收"><span class="nav-number">6.</span> <span class="nav-text"> 对象引用、可变性和垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python中的变量是什么"><span class="nav-number">6.1.</span> <span class="nav-text"> python中的变量是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和is的区别"><span class="nav-number">6.2.</span> <span class="nav-text"> ==和is的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#del语句和垃圾回收"><span class="nav-number">6.3.</span> <span class="nav-text"> del语句和垃圾回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个经典的参数错误"><span class="nav-number">6.4.</span> <span class="nav-text"> 一个经典的参数错误</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元类编程"><span class="nav-number">7.</span> <span class="nav-text"> 元类编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#property动态属性"><span class="nav-number">7.1.</span> <span class="nav-text"> property动态属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性描述符和属性查找过程"><span class="nav-number">7.2.</span> <span class="nav-text"> 属性描述符和属性查找过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-和-init-的区别"><span class="nav-number">7.3.</span> <span class="nav-text"> new 和 init 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义元类"><span class="nav-number">7.4.</span> <span class="nav-text"> 自定义元类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过元类实现orm"><span class="nav-number">7.5.</span> <span class="nav-text"> 通过元类实现ORM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代器和生成器"><span class="nav-number">8.</span> <span class="nav-text"> 迭代器和生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python中的迭代协议"><span class="nav-number">8.1.</span> <span class="nav-text"> python中的迭代协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是迭代器和可迭代对象"><span class="nav-number">8.2.</span> <span class="nav-text"> 什么是迭代器和可迭代对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器函数的使用"><span class="nav-number">8.3.</span> <span class="nav-text"> 生成器函数的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器在userlist中的应用"><span class="nav-number">8.4.</span> <span class="nav-text"> 生成器在UserList中的应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python-socket编程"><span class="nav-number">9.</span> <span class="nav-text"> python socket编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#弄懂-http-socket-tcp-这几个概念"><span class="nav-number">9.1.</span> <span class="nav-text"> 弄懂 HTTP、Socket、TCP 这几个概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#client和server实现通讯"><span class="nav-number">9.2.</span> <span class="nav-text"> client和server实现通讯</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多线程-多进程和线程池编程"><span class="nav-number">10.</span> <span class="nav-text"> 多线程、多进程和线程池编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python-中的-gil"><span class="nav-number">10.1.</span> <span class="nav-text"> python 中的 GIL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程编程-threading"><span class="nav-number">10.2.</span> <span class="nav-text"> 多线程编程 - threading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程间通信-共享变量和-queue"><span class="nav-number">10.3.</span> <span class="nav-text"> 线程间通信 - 共享变量和 Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程同步-lock-rlock"><span class="nav-number">10.4.</span> <span class="nav-text"> 线程同步 - Lock、RLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程同步-condition-使用以及源码分析"><span class="nav-number">10.5.</span> <span class="nav-text"> 线程同步 - condition 使用以及源码分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程同步-semaphore-使用以及源码分析"><span class="nav-number">10.6.</span> <span class="nav-text"> 线程同步 - Semaphore 使用以及源码分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#threadpoolexecutor线程池"><span class="nav-number">10.7.</span> <span class="nav-text"> ThreadPoolExecutor线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#threadpoolexecutor源码分析"><span class="nav-number">10.8.</span> <span class="nav-text"> ThreadPoolExecutor源码分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程和多进程对比"><span class="nav-number">10.9.</span> <span class="nav-text"> 多线程和多进程对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiprocessing-多进程编程"><span class="nav-number">10.10.</span> <span class="nav-text"> multiprocessing 多进程编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程间通信-queue-pipemanager"><span class="nav-number">10.11.</span> <span class="nav-text"> 进程间通信 - Queue、Pipe，Manager</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协程和异步io"><span class="nav-number">11.</span> <span class="nav-text"> 协程和异步io</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并发-并行-同步-异步-阻塞-非阻塞"><span class="nav-number">11.1.</span> <span class="nav-text"> 并发、并行、同步、异步、阻塞、非阻塞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c10k问题和io多路复用-select-poll-和-epoll"><span class="nav-number">11.2.</span> <span class="nav-text"> C10K问题和IO多路复用 (select、poll 和 epoll)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#select回调事件循环获取html"><span class="nav-number">11.3.</span> <span class="nav-text"> select+回调+事件循环获取html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回调之痛"><span class="nav-number">11.4.</span> <span class="nav-text"> 回调之痛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协程是什么"><span class="nav-number">11.5.</span> <span class="nav-text"> 协程是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器进阶-send-close和throw方法"><span class="nav-number">11.6.</span> <span class="nav-text"> 生成器进阶-send、close和throw方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器进阶-yield-from"><span class="nav-number">11.7.</span> <span class="nav-text"> 生成器进阶-yield from</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#async和await"><span class="nav-number">11.8.</span> <span class="nav-text"> async和await</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器实现协程"><span class="nav-number">11.9.</span> <span class="nav-text"> 生成器实现协程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#asyncio并发编程"><span class="nav-number">12.</span> <span class="nav-text"> asyncio并发编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件循环"><span class="nav-number">12.1.</span> <span class="nav-text"> 事件循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#task取消和子协程调用原理"><span class="nav-number">12.2.</span> <span class="nav-text"> task取消和子协程调用原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call_soon-call_at-call_later-call_soon_threadsafe"><span class="nav-number">12.3.</span> <span class="nav-text"> call_soon、call_at、call_later、call_soon_threadsafe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#threadpollexecutor-和-asycio-完成阻塞-io-请求"><span class="nav-number">12.4.</span> <span class="nav-text"> ThreadPollExecutor 和 asycio 完成阻塞 IO 请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asyncio-模拟-http-请求"><span class="nav-number">12.5.</span> <span class="nav-text"> asyncio 模拟 http 请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#future-和-task"><span class="nav-number">12.6.</span> <span class="nav-text"> future 和 task</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asyncio同步和通信"><span class="nav-number">12.7.</span> <span class="nav-text"> asyncio同步和通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">13.</span> <span class="nav-text"> 参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yohane</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
