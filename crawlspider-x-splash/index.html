@@ -132,7 +132,7 @@
 <meta property="og:site_name" content="Yohane">
 <meta property="og:description" content="CrawlSpider和Splash的整合 CrawlSpider是Scrapy的CrawlSpider Splash是Splash和Scrapy-Splash插件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-20T18:13:10.000Z">
+<meta property="og:updated_time" content="2018-08-21T10:56:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CrawlSpider X Splash">
 <meta name="twitter:description" content="CrawlSpider和Splash的整合 CrawlSpider是Scrapy的CrawlSpider Splash是Splash和Scrapy-Splash插件">
@@ -416,7 +416,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-21 02:13:10" itemprop="dateModified" datetime="2018-08-21T02:13:10+08:00">2018-08-21</time>
+                <time title="修改时间：2018-08-21 18:56:32" itemprop="dateModified" datetime="2018-08-21T18:56:32+08:00">2018-08-21</time>
               
             
           </span>
@@ -479,6 +479,7 @@
 <ul>
 <li>由于官方文档只是给出简单使用示例 当与CrawlSpider整合的时候只能自己看源码了</li>
 <li>在不破坏框架结构和调用流程的情况下 在其最边缘整合是再好不过的了</li>
+<li>如果用<code>scrapy-redis</code>时 <code>DUPEFILTER_CLASS</code>配置冲突建议用<code>scrapy-redis</code>的就行</li>
 </ul>
 <h1 id="源码解析"><a class="markdownIt-Anchor" href="#源码解析"></a> 源码解析</h1>
 <ul>
@@ -523,7 +524,7 @@
 </ul>
 </blockquote>
 <p>即：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">script = <span class="string">"""</span></span><br><span class="line"><span class="string">        function main(splash,args)</span></span><br><span class="line"><span class="string">            splash.images_enabled = false</span></span><br><span class="line"><span class="string">        end</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">self._response_downloaded,endpoint=<span class="string">'execute'</span>,args=&#123;<span class="string">"lua_source"</span>:script&#125;)</span><br><span class="line">SplashRequest(endpoint=<span class="string">'execute'</span>,args=&#123;<span class="string">"lua_source"</span>:script&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">script = <span class="string">"""</span></span><br><span class="line"><span class="string">        function main(splash,args)</span></span><br><span class="line"><span class="string">            splash.images_enabled = false</span></span><br><span class="line"><span class="string">        end</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">SplashRequest(endpoint=<span class="string">'execute'</span>,args=&#123;<span class="string">"lua_source"</span>:script&#125;)</span><br></pre></td></tr></table></figure>
 <div class="note warning"><p>例子为了保证简单明了 只填写了基本的参数 其他如 url 等参数和return splash:html()等脚本 必要的需自己写上</p></div>
 <h1 id="splash-设置-ua"><a class="markdownIt-Anchor" href="#splash-设置-ua"></a> Splash 设置 UA</h1>
 <p>同样scrapy-splash并没有直接给出 但设置<code>User-Agent</code>发方法很多<br>
