@@ -132,7 +132,7 @@
 <meta property="og:site_name" content="Yohane">
 <meta property="og:description" content="因为旧本本只有机械硬盘 把光驱位拆了后 弄了块SSD 于是想着折腾一下黑苹果 装完后并不完美 踩了不少坑 独显和内置无线网卡折腾了很久无解">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-24T10:41:06.000Z">
+<meta property="og:updated_time" content="2018-09-02T17:02:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="索尼SVF15326SCB黑苹果后">
 <meta name="twitter:description" content="因为旧本本只有机械硬盘 把光驱位拆了后 弄了块SSD 于是想着折腾一下黑苹果 装完后并不完美 踩了不少坑 独显和内置无线网卡折腾了很久无解">
@@ -416,7 +416,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-24 18:41:06" itemprop="dateModified" datetime="2018-08-24T18:41:06+08:00">2018-08-24</time>
+                <time title="修改时间：2018-09-03 01:02:50" itemprop="dateModified" datetime="2018-09-03T01:02:50+08:00">2018-09-03</time>
               
             
           </span>
@@ -642,7 +642,9 @@
 <p>获取VID、PID的方法应该很多 设备管理器就行 <code>设备管理器</code>&gt;&gt;&gt;<code>蓝牙</code>&gt;&gt;&gt;<code>BCM43142 Bluetooth Adapter</code>（自己的蓝牙适配器）&gt;&gt;&gt;右键<code>属性</code>&gt;&gt;&gt;<code>详细信息</code>&gt;&gt;&gt;<code>硬件id</code>&gt;&gt;&gt;<code>USB\VID_0489&amp;PID_E062&amp;REV_0112</code><br>
 然后将VID、PID十六进制值分别转为十进制 <code>0489</code>&gt;&gt;&gt;<code>1161</code>和<code>E062</code>&gt;&gt;&gt;<code>57442</code></p>
 <h2 id="修改原生驱动infoplist"><a class="markdownIt-Anchor" href="#修改原生驱动infoplist"></a> 修改原生驱动info.plist</h2>
-<p>文件路径 <code>/System/Library/Extensions/IOBluetoothFamily.kext/Contents/PlugIns/BroadcomBluetoothHostControllerUSBTransport.kext/Contents/Info.plist</code> 将<code>idVendor</code>和<code>idVendor</code>的值改为对应的值即可</p>
+<p>文件路径：<br>
+<code>/System/Library/Extensions/IOBluetoothFamily.kext/Contents/PlugIns/BroadcomBluetoothHostControllerUSBTransport.kext/Contents/Info.plist</code><br>
+将<code>idVendor</code>和<code>idVendor</code>的值改为对应的值即可</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>idProduct<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">integer</span>&gt;</span>57442<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>idVendor<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">integer</span>&gt;</span>1161<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h1 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h1>
 <hr class="footnotes-sep">
